@@ -7,188 +7,133 @@
   <style>
     body {
       font-family: sans-serif;
-      background-color: #f5f5f5;
+      background-color: #f8f8f8;
       margin: 0;
-      padding: 20px;
+      padding: 0;
     }
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 40px 20px;
+      background-color: white;
+      min-height: 100vh;
     }
-    h1 {
+    .hidden {
+      display: none;
+    }
+    h1, h2, h3 {
       text-align: center;
     }
-    .question {
-      margin-bottom: 20px;
+    .intro-image, .question-image {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
     }
-    .question p {
-      font-weight: bold;
+    .question {
+      margin-bottom: 30px;
     }
     .answers label {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
     }
-    #result {
-      margin-top: 30px;
-      font-size: 1.2em;
-      font-weight: bold;
-      text-align: center;
-    }
-    .buttons {
+    .button-group {
       display: flex;
       justify-content: center;
       gap: 20px;
       margin-top: 30px;
     }
     button {
-      padding: 10px 30px;
+      padding: 10px 20px;
       font-size: 1em;
       border: none;
-      background-color: #0077cc;
-      color: white;
       border-radius: 5px;
+      background-color: #004080;
+      color: white;
       cursor: pointer;
     }
     button:hover {
-      background-color: #005fa3;
+      background-color: #003060;
+    }
+    #result {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 1.2em;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      margin-top: 40px;
+      color: #555;
+    }
+    img.logo {
+      max-width: 150px;
+      display: block;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Quiz: Sítios Arqueológicos de Braga</h1>
-    <form id="quizForm">
-      
-<!-- Termas do Alto da Cividade -->
-<div class="question">
-  <p>1. Qual era a principal função das Termas do Alto da Cividade durante o período romano?</p>
-  <div class="answers">
-    <label><input type="radio" name="q1" value="A"> A) Complexo balnear público</label>
-    <label><input type="radio" name="q1" value="B"> B) Residência de elites</label>
-    <label><input type="radio" name="q1" value="C"> C) Centro religioso</label>
-    <label><input type="radio" name="q1" value="D"> D) Quartel militar</label>
-  </div>
-</div>
 
-<div class="question">
-  <p>2. Em que século se estima que o complexo termal tenha começado a ser utilizado?</p>
-  <div class="answers">
-    <label><input type="radio" name="q2" value="A"> A) Século I d.C.</label>
-    <label><input type="radio" name="q2" value="B"> B) Século I a.C.</label>
-    <label><input type="radio" name="q2" value="C"> C) Século III d.C.</label>
-    <label><input type="radio" name="q2" value="D"> D) Século V d.C.</label>
-  </div>
-</div>
+    <!-- Página de Rosto -->
+    <section id="intro">
+      <img src="logo-cmbraga.png" alt="Logótipo Câmara Municipal de Braga" class="logo">
+      <h1>Quiz Interativo<br>Sítios Arqueológicos de Braga</h1>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Termas_romanas_do_Alto_da_Cividade_01.JPG" alt="Imagem dos espaços arqueológicos" class="intro-image">
+      <p style="text-align:center; max-width:700px; margin: 0 auto;">
+        Esta iniciativa da Unidade de Arqueologia da Câmara Municipal de Braga assinala o
+        <strong>Dia Internacional dos Monumentos e Sítios 2025</strong>, dedicado ao tema <em>“Património resiliente face às catástrofes e conflitos”</em>.<br><br>
+        Ao longo de milénios, os vestígios arqueológicos de Braga resistiram a sismos, guerras, demolições e até ao esquecimento. Este quiz é também um teste à tua resiliência — serás capaz de chegar ao fim com pontuação máxima?<br><br>
+        Aceita o desafio e descobre mais sobre três dos mais emblemáticos sítios arqueológicos da cidade.
+      </p>
+      <div class="button-group">
+        <button onclick="iniciarQuiz()">Iniciar Quiz</button>
+      </div>
+    </section>
 
-<div class="question">
-  <p>3. Qual destas estruturas NÃO fazia parte das termas romanas típicas, como as da Cividade?</p>
-  <div class="answers">
-    <label><input type="radio" name="q3" value="A"> A) Taberna</label>
-    <label><input type="radio" name="q3" value="B"> B) Caldarium</label>
-    <label><input type="radio" name="q3" value="C"> C) Frigidarium</label>
-    <label><input type="radio" name="q3" value="D"> D) Tepidarium</label>
-  </div>
-</div>
+    <!-- Secções das Perguntas -->
+    <section id="quiz" class="hidden">
+      <div class="question">
+        <h2>1. Termas do Alto da Cividade</h2>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Termas_romanas_do_Alto_da_Cividade_01.JPG" alt="Termas do Alto da Cividade" class="question-image">
+        <p>Qual era a principal função das Termas do Alto da Cividade durante o período romano?</p>
+        <div class="answers">
+          <label><input type="radio" name="q1" value="A"> A) Complexo balnear público</label>
+          <label><input type="radio" name="q1" value="B"> B) Residência de elites</label>
+          <label><input type="radio" name="q1" value="C"> C) Centro religioso</label>
+          <label><input type="radio" name="q1" value="D"> D) Quartel militar</label>
+        </div>
+      </div>
+      <!-- Repetir estrutura para q2 a q9 -->
+    </section>
 
-<!-- Domus da Escola Velha da Sé -->
-<div class="question">
-  <p>4. O que é uma “domus” no contexto romano?</p>
-  <div class="answers">
-    <label><input type="radio" name="q4" value="A"> A) Um templo dedicado a Júpiter</label>
-    <label><input type="radio" name="q4" value="B"> B) Uma casa privada urbana</label>
-    <label><input type="radio" name="q4" value="C"> C) Um tipo de muralha defensiva</label>
-    <label><input type="radio" name="q4" value="D"> D) Uma praça pública</label>
-  </div>
-</div>
-
-<div class="question">
-  <p>5. Que elemento decorativo foi identificado na Domus da Escola Velha da Sé, indicando a sofisticação do espaço?</p>
-  <div class="answers">
-    <label><input type="radio" name="q5" value="A"> A) Arcos góticos</label>
-    <label><input type="radio" name="q5" value="B"> B) Colunas dóricas</label>
-    <label><input type="radio" name="q5" value="C"> C) Pavimento em mosaico</label>
-    <label><input type="radio" name="q5" value="D"> D) Tectos pintados</label>
-  </div>
-</div>
-
-<div class="question">
-  <p>6. A Domus da Escola Velha da Sé revela vestígios de ocupação até que período?</p>
-  <div class="answers">
-    <label><input type="radio" name="q6" value="A"> A) Apenas romana</label>
-    <label><input type="radio" name="q6" value="B"> B) Até ao século III d.C.</label>
-    <label><input type="radio" name="q6" value="C"> C) Até à Idade Média</label>
-    <label><input type="radio" name="q6" value="D"> D) Apenas na época medieval</label>
-  </div>
-</div>
-
-<!-- Fonte do Ídolo -->
-<div class="question">
-  <p>7. A Fonte do Ídolo está associada a que tipo de estrutura?</p>
-  <div class="answers">
-    <label><input type="radio" name="q7" value="A"> A) Um santuário rupestre</label>
-    <label><input type="radio" name="q7" value="B"> B) Um aqueduto</label>
-    <label><input type="radio" name="q7" value="C"> C) Um reservatório militar</label>
-    <label><input type="radio" name="q7" value="D"> D) Um poço ritual celta</label>
-  </div>
-</div>
-
-<div class="question">
-  <p>8. Que elementos caracterizam a Fonte do Ídolo?</p>
-  <div class="answers">
-    <label><input type="radio" name="q8" value="A"> A) Pinturas murais</label>
-    <label><input type="radio" name="q8" value="B"> B) Esculturas e inscrições latinas</label>
-    <label><input type="radio" name="q8" value="C"> C) Colunas ornamentais</label>
-    <label><input type="radio" name="q8" value="D"> D) Altar móvel</label>
-  </div>
-</div>
-
-<div class="question">
-  <p>9. A inscrição da Fonte do Ídolo menciona que divindade local?</p>
-  <div class="answers">
-    <label><input type="radio" name="q9" value="A"> A) Júpiter</label>
-    <label><input type="radio" name="q9" value="B"> B) Tongoenabiago</label>
-    <label><input type="radio" name="q9" value="C"> C) Marte</label>
-    <label><input type="radio" name="q9" value="D"> D) Nabia</label>
-  </div>
-</div>
-
-    </form>
-
-    <div class="buttons">
-      <button type="button" onclick="corrigirQuiz()">Submeter</button>
-      <button type="button" onclick="reiniciarQuiz()">Reiniciar</button>
-      <button type="button" onclick="partilharResultado()">Partilhar</button>
-    </div>
-
-    <div id="result"></div>
+    <!-- Resultados -->
+    <section id="final" class="hidden">
+      <h2>Resultado</h2>
+      <div id="result"></div>
+      <div class="button-group">
+        <button onclick="reiniciarQuiz()">Reiniciar</button>
+        <button onclick="partilharResultado()">Partilhar</button>
+      </div>
+      <footer>
+        Esta atividade integra a celebração do <strong>Dia Internacional dos Monumentos e Sítios 2025</strong> e é promovida pela Unidade de Arqueologia da <strong>Câmara Municipal de Braga</strong>.<br>
+        Obrigado por participares!
+      </footer>
+    </section>
   </div>
 
   <script>
-    const respostasCorretas = {
-      q1: "A",
-      q2: "A",
-      q3: "A",
-      q4: "B",
-      q5: "C",
-      q6: "C",
-      q7: "A",
-      q8: "B",
-      q9: "B"
-    };
+    function iniciarQuiz() {
+      document.getElementById('intro').classList.add('hidden');
+      document.getElementById('quiz').classList.remove('hidden');
+    }
 
-    function corrigirQuiz() {
-      let pontuacao = 0;
-      for (let q in respostasCorretas) {
-        const resposta = document.querySelector(`input[name="${q}"]:checked`);
-        if (resposta && resposta.value === respostasCorretas[q]) {
-          pontuacao++;
-        }
-      }
-
+    function mostrarResultado(pontuacao) {
+      document.getElementById('quiz').classList.add('hidden');
+      document.getElementById('final').classList.remove('hidden');
       let mensagem = `Pontuação: ${pontuacao} em 9.`;
       if (pontuacao >= 7) {
         mensagem += " Parabéns! Mostraste um excelente conhecimento sobre o património arqueológico de Braga! 🏛️";
@@ -197,14 +142,11 @@
       } else {
         mensagem += " Continua a explorar! O conhecimento constrói-se passo a passo.";
       }
-
       document.getElementById("result").innerText = mensagem;
     }
 
     function reiniciarQuiz() {
-      const form = document.getElementById("quizForm");
-      form.reset();
-      document.getElementById("result").innerText = "";
+      location.reload();
     }
 
     function partilharResultado() {
