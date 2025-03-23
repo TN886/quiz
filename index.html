@@ -40,6 +40,7 @@
     }
     .button-group {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
       margin-top: 30px;
@@ -73,6 +74,11 @@
       display: block;
       margin: 0 auto;
     }
+    .intro-text {
+      text-align: justify;
+      max-width: 700px;
+      margin: 0 auto;
+    }
   </style>
 </head>
 <body>
@@ -80,10 +86,12 @@
 
     <!-- Página de Rosto -->
     <section id="intro">
-      <img src="logo-cmbraga.png" alt="Logótipo Câmara Municipal de Braga" class="logo">
+      <a href="https://www.cm-braga.pt" target="_blank">
+        <img src="logo-cmbraga.png" alt="Logótipo Câmara Municipal de Braga" class="logo">
+      </a>
       <h1>Quiz Interativo<br>Sítios Arqueológicos de Braga</h1>
       <img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Termas_romanas_do_Alto_da_Cividade_01.JPG" alt="Imagem dos espaços arqueológicos" class="intro-image">
-      <p style="text-align:center; max-width:700px; margin: 0 auto;">
+      <p class="intro-text">
         Esta iniciativa da Unidade de Arqueologia da Câmara Municipal de Braga assinala o
         <strong>Dia Internacional dos Monumentos e Sítios 2025</strong>, dedicado ao tema <em>“Património resiliente face às catástrofes e conflitos”</em>.<br><br>
         Ao longo de milénios, os vestígios arqueológicos de Braga resistiram a sismos, guerras, demolições e até ao esquecimento. Este quiz é também um teste à tua resiliência — serás capaz de chegar ao fim com pontuação máxima?<br><br>
@@ -106,8 +114,10 @@
           <label><input type="radio" name="q1" value="C"> C) Centro religioso</label>
           <label><input type="radio" name="q1" value="D"> D) Quartel militar</label>
         </div>
+        <div class="button-group">
+          <button onclick="mostrarResultado(1)">Seguinte</button>
+        </div>
       </div>
-      <!-- Repetir estrutura para q2 a q9 -->
     </section>
 
     <!-- Resultados -->
